@@ -30,20 +30,20 @@ export const FeedbackProvider = ({ children }) => {
   const addFeedback = newFeedback => {
     newFeedback.id = uuidv4();
     setFeedback( [newFeedback, ...feedback] )
-  };
+  }
 
   // Delete feedback
-  const deleteFeedback = (id) => {
+  const deleteFeedback = id => {
     if (window.confirm("Are you sure you want to delete?")) {
-      setFeedback( feedback.filter((item) => item.id !== id) )
+      setFeedback( feedback.filter( item => item.id !== id) )
     }
-  };
+  }
 
   // Set item to be updated
   const editFeedback = item => {
     // console.log( item )
-    setFeedbackEdit({ item, edit: true });
-  };
+    setFeedbackEdit({ item, edit: true })
+  }
 
   // Update feedback item
   const updateFeedback = ( id, updItem ) => {
@@ -54,8 +54,8 @@ export const FeedbackProvider = ({ children }) => {
     setFeedback(
       // overwrite the item with equal ID
       feedback.map( item => (item.id === id ? { ...item, ...updItem } : item) )
-    );
-  };
+    )
+  }
 
   return (
     <FeedbackContext.Provider
@@ -70,7 +70,7 @@ export const FeedbackProvider = ({ children }) => {
     >
       { children }
     </FeedbackContext.Provider>
-  );
-};
+  )
+}
 
-export default FeedbackContext;
+export default FeedbackContext
